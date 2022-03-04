@@ -4,12 +4,13 @@ from .serializers import Serializations
 from base.models import Item
 
 
-
 @api_view(['GET'])
 def getdata(request):
     item = Item.objects.all()
     serializer = Serializations(item, many=True)
     return Response(serializer.data)
+    
+
 @api_view(['POST'])
 def postdata(request):
     serializer = Serializations(data=request.data)
